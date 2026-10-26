@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="hi-Latn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Let’s decide, Ma’am.</title>
+<style>
+:root{--green:#9B1B3F;--cream:#FFF4F5;--sage:#F2B8C4;--rose:#F7CBD3;--gold:#D6586F;--text:#3A2227;--card:#FFFBFB;--line:rgba(155,27,63,.2);--head:#8C1D3A;--muted:#7a5560;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--cream:#2a1218;--card:#3a1a23;--text:#FBEAEC;--head:#FBD3DA;--line:rgba(242,184,196,.3);--muted:#e0b8c0;--green:#F2B8C4}}
+:root[data-theme="dark"]{--cream:#2a1218;--card:#3a1a23;--text:#FBEAEC;--head:#FBD3DA;--line:rgba(242,184,196,.3);--muted:#e0b8c0;--green:#F2B8C4}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%}
+body{background:radial-gradient(ellipse at 15% 0%,color-mix(in srgb,var(--rose) 30%,transparent),transparent 55%),radial-gradient(ellipse at 100% 100%,color-mix(in srgb,var(--sage) 35%,transparent),transparent 55%),var(--cream);color:var(--text);font:17px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.serif{font-family:Georgia,"Times New Roman",serif;color:var(--head);font-weight:600;line-height:1.2;margin:0}
+.wrap{max-width:720px;margin:0 auto;padding:28px 20px 60px;min-height:100vh;position:relative}
+.stars{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.stars svg{position:absolute;color:var(--gold);opacity:.55}
+.fade{animation:in .5s ease both}
+@keyframes in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.eyebrow{letter-spacing:.2em;text-transform:uppercase;font-size:12px;color:var(--gold);margin:30px 0 14px}
+h1{font-size:clamp(38px,9vw,62px)}
+.sub{font-family:Georgia,serif;font-style:italic;font-size:clamp(20px,4.5vw,26px);color:var(--muted);margin:10px 0 26px}
+.rule{height:1px;background:linear-gradient(90deg,var(--gold),transparent);margin:22px 0;border:0}
+.intro p{margin:0 0 16px}
+.btn{font:inherit;font-weight:600;cursor:pointer;border:0;border-radius:999px;padding:15px 30px;background:#9B1B3F;color:#fff;min-height:52px;transition:transform .2s,background .2s}
+.btn:hover:not(:disabled){transform:translateY(-1px);background:#B3244C}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.btn.ghost{background:transparent;color:var(--head);border:1px solid var(--line)}
+button:focus-visible,input:focus-visible+.opt{outline:3px solid var(--gold);outline-offset:3px}
+.note{font-size:14px;color:var(--muted);margin-top:14px}
+.small{font-size:13.5px;color:var(--muted);border-left:2px solid var(--rose);padding-left:12px;margin-top:26px}
+.top{display:flex;justify-content:space-between;align-items:center;font-size:14px;color:var(--muted);margin-bottom:10px}
+.bar{height:6px;border-radius:9px;background:var(--line);overflow:hidden;margin-bottom:34px}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--sage),var(--gold));border-radius:9px;transition:width .5s ease}
+.back{background:none;border:0;color:var(--muted);font:inherit;font-size:14px;cursor:pointer;padding:8px 4px;min-height:40px}
+.q{font-size:clamp(23px,5.4vw,32px);margin-bottom:24px}
+.opts{display:grid;gap:12px;border:0;padding:0;margin:0}
+.opts legend{position:absolute;left:-9999px}
+.opts input{position:absolute;opacity:0;pointer-events:none}
+.opt{display:flex;gap:14px;align-items:flex-start;background:var(--card);border:1.5px solid var(--line);border-radius:18px;padding:16px 18px;cursor:pointer;transition:border-color .2s,background .2s,transform .2s;min-height:60px}
+.opt:hover{border-color:var(--sage)}
+.opt b{flex:none;width:30px;height:30px;border-radius:50%;border:1.5px solid var(--gold);display:grid;place-items:center;font:600 14px Georgia,serif;color:var(--gold);margin-top:1px}
+input:checked+.opt{border-color:var(--green);background:color-mix(in srgb,var(--sage) 28%,var(--card));box-shadow:0 4px 18px rgba(155,27,63,.15)}
+input:checked+.opt b{background:#9B1B3F;color:#fff;border-color:#9B1B3F}
+.nav{display:flex;justify-content:flex-end;margin-top:26px;position:sticky;bottom:0;padding:14px 0 calc(14px + env(safe-area-inset-bottom,0px))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:22px 22px;margin:18px 0}
+.card h3{font-size:21px;margin-bottom:10px}
+.tag{display:inline-block;background:color-mix(in srgb,var(--rose) 45%,transparent);border-radius:999px;padding:4px 14px;font-size:14px;margin:0 6px 8px 0}
+ol.steps{padding-left:22px;margin:0}ol.steps li{margin-bottom:10px}
+.letter{background:linear-gradient(180deg,var(--card),color-mix(in srgb,var(--rose) 18%,var(--card)));border:1px solid var(--line);border-radius:22px;padding:28px 24px;margin:26px 0;font-family:Georgia,serif;font-size:18px}
+.letter p{margin:0 0 15px}
+.plan{text-align:center;border:1.5px dashed var(--gold);border-radius:22px;padding:26px 20px;margin:26px 0}
+.plan h2{margin-bottom:10px}
+.acts{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}
+.conf{margin-top:14px;padding:16px;border-radius:16px;border:1px solid var(--line);background:var(--card)}
+.disc{font-size:13px;color:var(--muted);margin-top:30px}
+@media(min-width:900px){.wrap{padding-top:56px}}
+</style>
+</head>
+<body>
+<div class="wrap" id="wrap">
+<div class="stars" aria-hidden="true">
+<svg style="top:46px;right:30px" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M12 1l2.4 8.6L23 12l-8.6 2.4L12 23l-2.4-8.6L1 12l8.6-2.4z"/></svg>
+<svg style="top:120px;right:80px;opacity:.35" width="12" height="12" viewBox="0 0 24 24"><path fill="currentColor" d="M12 1l2.4 8.6L23 12l-8.6 2.4L12 23l-2.4-8.6L1 12l8.6-2.4z"/></svg>
+<svg style="top:80px;left:14px;opacity:.3" width="14" height="14" viewBox="0 0 24 24"><path fill="currentColor" d="M12 1l2.4 8.6L23 12l-8.6 2.4L12 23l-2.4-8.6L1 12l8.6-2.4z"/></svg>
+</div>
+<main id="app" aria-live="polite"></main>
+</div>
+<script>
+const Q=[
+["Abhi sach mein teri life mein kya chal raha hai?",["Thodi pareshani hai, but main sambhal rahi hoon. Mujhe bas clarity chahiye.","Dimaag full ho chuka hai. MBBS, family, future — sab ek saath sochkar thak gayi hoon.","Sabse zyada darr future ka hai. Samajh nahi aa raha ki aage kya hoga.","Main bahar se normal hoon, par andar se kaafi kuch handle kar rahi hoon jo kisi ko nahi batati."]],
+["Agar duniya mein kisi ko tere decision se farak hi na padta, toh tu kya choose karti?",["MBBS. Main sach mein doctor banna chahti hoon, sirf logon ko dikhane ke liye nahi.","Ek aur attempt karne ka mann hai, but main khud bhi sure nahi hoon.","Shayad koi doosra career. Ho sakta hai main use bhi achhe se kar sakun.","Abhi mujhe kuch decide nahi karna. Mujhe pehle thoda sukoon chahiye."]],
+["Agar ek aur drop ka option mile, toh sabse pehli feeling kya aayegi?",["Darr lagega, but andar se lagega ki haan, main ek aur baar honestly try karna chahti hoon.","Ek chance aur milne ki hope hogi, par pichhle saalon ka darr bhi saath aayega.","Thakaan feel hogi. Sirf ek aur saal isi uncertainty mein nahi rehna chahti.","Relief hoga ki decision abhi nahi lena padega. Mujhe pehle break chahiye."]],
+["Chaar drops ke baad sabse zyada dard kis baat ka hai?",["MBBS seat na milne ka. Mera dream abhi bhi mere liye bahut important hai.","Itni mehnat aur time dene ke baad bhi result na milne ka.","Log kya kahenge aur parents ko kaise samjhaungi, iska.","Yeh samajh na aane ka ki main apni life mein ab kis direction mein jaun."]],
+["Ek aur attempt ke liye teri real situation kya kehti hai?",["Meri preparation mein clear gaps hain. Agar unhe identify karke strategy badlun, toh ek aur attempt seriously consider kar sakti hoon.","Main padh sakti hoon, lekin meri mental energy aur consistency abhi weak hai.","Family ki financial situation aur ek aur saal ka kharcha seriously consider karna padega.","Abhi mujhe apni preparation, finances aur mental energy — teeno ko honestly assess karna hai."]],
+["Parents aur ghar ki situation ko lekar tere mann mein kya chal raha hai?",["Mujhe lagta hai parents ek aur chance support kar sakte hain, agar plan realistic ho.","Parents ki expectations aur financial pressure ke beech main khud ko guilty feel karti hoon.","Mujhe darr hai ki ek aur drop family ke liye financially ya emotionally difficult ho sakta hai.","Mujhe unse khulkar baat karni hai, par samajh nahi aa raha conversation kaise shuru karun."]],
+["Agar tu ek aur attempt choose karti hai, toh kya genuinely badal sakti hai?",["Main apni mistakes identify karke study plan, mock analysis aur revision strategy change karne ko ready hoon.","Main try karna chahti hoon, lekin mujhe pehle samajhna hoga ki pichhli attempts mein kya kaam nahi kiya.","Abhi mere paas energy nahi hai ki main phir se wahi routine shuru kar sakun.","Mujhe lagta hai kisi experienced teacher ya counsellor ke saath honestly review karna helpful hoga."]],
+["Agar MBBS ke alawa koi doosra career choose karna pade, toh tu kya feel karegi?",["Dukh hoga, but main kisi doosre meaningful career ko explore karne ke liye open ho sakti hoon.","Abhi main doosre options ke baare mein soch bhi nahi pa rahi. MBBS se emotionally attached hoon.","Mujhe darr hai ki alternative choose karne ka matlab hoga ki main haar gayi.","Main options explore karna chahti hoon, lekin pressure mein aakar turant switch nahi karna chahti."]],
+["Tere decision par sabse zyada kis cheez ka asar ho raha hai?",["Mera apna dream aur doctor banne ki genuine desire.","Yeh feeling ki chaar saal laga diye, ab chhod diya toh sab waste ho jayega.","Parents, relatives, society aur doosron ki expectations.","Dream bhi important hai, family bhi, finances bhi aur meri apni well-being bhi. Sabko consider karna hai."]],
+["Aaj tujhe apne future ke liye sabse zyada kis cheez ki zaroorat hai?",["Ek realistic plan ke saath ek aur attempt consider karne ka mauka.","Apni preparation, eligibility, finances aur chances ko samajhne ke liye honest guidance.","Thoda waqt, rest aur bina judgement ke apne aap ko samajhne ka space.","MBBS aur alternative careers dono ko explore karke informed decision lene ka confidence."]]];
+let step=-1,ans=Array(10).fill(null),confirmReset=false;
+const app=document.getElementById("app");
+function esc(t){return t.replace(/&/g,"&amp;").replace(/</g,"&lt;")}
+function render(){
+if(step===-1){app.innerHTML=`<section class="intro fade"><p class="eyebrow">Ek private reflection</p><h1>Let’s decide, Ma’am.</h1><p class="sub">Ab aage kya karna chahiye?</p><hr class="rule">
+<p>Chaar drops, bahut saari expectations, aur ab ek bada decision.</p>
+<p>Koi perfect answer nahi hai. Bas 10 sawaal. Jo sach mein feel ho, wahi choose karna.</p>
+<p style="margin-top:26px"><button class="btn" id="go">Chalo, khud se baat karte hain →</button></p>
+<p class="note">No judgement. No right or wrong answers. Take your time.</p>
+<p class="small">Yeh website tere liye decision nahi legi. Bas tujhe apni awaaz clearly sunne mein help karegi.</p></section>`;
+document.getElementById("go").onclick=()=>{step=0;render()};return}
+if(step<10){const[q,o]=Q[step];const last=step===9;
+app.innerHTML=`<section class="fade"><div class="top"><button class="back" id="bk" aria-label="Pichhle sawaal par wapas jao">← Back</button><span>Question ${step+1} of 10</span></div>
+<div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="10" aria-valuenow="${step+1}"><i style="width:${(step+1)*10}%"></i></div>
+<h2 class="q" id="qt">${esc(q)}</h2>
+<fieldset class="opts" aria-labelledby="qt"><legend>${esc(q)}</legend>${o.map((t,i)=>`<label><input type="radio" name="q" value="${i}" ${ans[step]===i?"checked":""}><span class="opt"><b>${"ABCD"[i]}</b><span>${esc(t)}</span></span></label>`).join("")}</fieldset>
+<div class="nav"><button class="btn" id="nx" ${ans[step]===null?"disabled":""}>${last?"Meri baat suno →":"Continue →"}</button></div></section>`;
+app.querySelectorAll("input").forEach(i=>i.onchange=()=>{ans[step]=+i.value;document.getElementById("nx").disabled=false});
+document.getElementById("bk").onclick=()=>{step--;render()};
+document.getElementById("nx").onclick=()=>{step++;render();window.scrollTo(0,0)};return}
+app.innerHTML=`<section class="fade"><div class="letter"><p>Are pagal, ho gayi hai kya?</p><p>Yeh questions batayenge tujhe ki tujhe kya karna hai? Tu khud jaanti hai tujhe kya karna hai. Bas zyada soch-soch kar khud ko pareshan mat kar.</p><p>Wahi kar jismein tu khush rahe, bas apne aane wale kal ko bhi dhyaan mein rakhkar.</p><p>Dil ki sun, dimaag se soch, aur faisla apne liye le.</p><p>Jo bhi hoga, acha hi hoga. ✨</p></div>
+<div class="plan"><h2>Abhi bas itna kar.</h2><p class="serif" style="font-size:20px;margin:0 0 14px">mast maggie bana, thoda chat-pata gaana laga aur pagal ho ja 🍜</p><p style="margin:0">Decision tera hoga. Information, support aur time lena bhi decision-making ka part hai.</p></div>
+<div class="acts"><button class="btn ghost" id="rv">Review my answers</button><button class="btn ghost" id="rs">Restart</button></div>
+<div id="cf"></div></section>`;
+document.getElementById("rv").onclick=()=>{step=0;render();window.scrollTo(0,0)};
+document.getElementById("rs").onclick=()=>{document.getElementById("cf").innerHTML=`<div class="conf"><p style="margin:0 0 12px">Sab answers clear ho jayenge. Pakka restart karna hai?</p><button class="btn" id="y">Haan, restart</button> <button class="btn ghost" id="n">Nahi</button></div>`;
+document.getElementById("y").onclick=()=>{ans=Array(10).fill(null);step=-1;render();window.scrollTo(0,0)};
+document.getElementById("n").onclick=()=>{document.getElementById("cf").innerHTML=""}};
+window.scrollTo(0,0)}
+render();
+</script>
+</body>
+</html>
